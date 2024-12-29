@@ -19,16 +19,25 @@
         </NuxtLink>
       </div>
     </nav>
-    <main class="flex-1 px-20">
-      <NuxtPage />
+    <main class="flex-1 py-10 bg-slate-200">
+      <article class="prose mx-auto">
+        <NuxtPage />
+      </article>
     </main>
     <footer>
-      <div class="flex h-16 justify-between p-4">
+      <!-- <div class="flex h-16 justify-between p-4">
         <p>&copy; 2024 New Code. All rights reserved.</p>
         <p>Contact us: <a href="mailto:info@newcode.com">info@newcode.com</a></p>
         <p><a href="/sitemap">Site Map</a></p>
         <p><a href="#top">Back to Top</a></p>
-      </div>
+      </div> -->
     </footer>
   </div>
 </template>
+
+
+<style lang="css">
+  #__nuxt {
+    height: 100%;
+  }
+</style>
