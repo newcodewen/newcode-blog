@@ -1,0 +1,42 @@
+name: Build and Deploy Github Page
+
+on:
+  push:
+    branches: [main]  # 当仓库 B 的 main 分支有推送时触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout Blog
+        uses: actions/checkout@v4
+
+      # 2. 安装 pnpm 并启用 corepack
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      
+      # 3. 安装 pnpm（通过 corepack）
+      - name: Enable pnpm
+        run: corepack enable
+
+      # 4. 安装依赖
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5. 构建项目
+      - name: Build
+        run: npx nuxt build --preset github_pages
+
+      # 3. 推送构建结果到仓库 A
+      - name: Push to Github Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          external_repository: newcodewen/newcodewent.github.io  # 仓库 A 的名称
+          publish_branch: main  # 仓库 A 的目标分支（如 gh-pages/main）
+          publish_dir: ./output/public       # 构建生成的目录（根据项目调整）
+          token: ${{ secrets.PAGE_TOKEN }}  # 使用仓库 B 的 Secret 令牌
