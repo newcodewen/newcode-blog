@@ -20,6 +20,10 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
       
+      # 安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm 
+      
 
       # 4. 安装依赖
       - name: Install dependencies
