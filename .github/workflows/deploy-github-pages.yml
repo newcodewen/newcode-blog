@@ -17,12 +17,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: pnpm
+          node-version: '20'
+          cache: 'pnpm'
       
-      # 3. 安装 pnpm（通过 corepack）
-      - name: Enable pnpm
-        run: corepack enable
 
       # 4. 安装依赖
       - name: Install dependencies
