@@ -39,4 +39,4 @@ jobs:
           external_repository: newcodewen/newcodewent.github.io  # 仓库 A 的名称
           publish_branch: main  # 仓库 A 的目标分支（如 gh-pages/main）
           publish_dir: ./output/public       # 构建生成的目录（根据项目调整）
-          token: ${{ secrets.PAGE_TOKEN }}  # 使用仓库 B 的 Secret 令牌
+          personal_token: ${{ secrets.PAGE_TOKEN }}  # 使用仓库 B 的 Secret 令牌
